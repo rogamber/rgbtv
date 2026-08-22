@@ -197,7 +197,111 @@ def crear_menu_western():
 				add_item( mode , title  , desc  , url  , thumbnail  , fanart  , year , genre , True , False )
 				cont = cont + 1
 			xbmcplugin.endOfDirectory(HANDLE)
+
+def crear_menu_fantasia():
+			r = requests.get("http://146.190.143.193:5001/menu_fantasia")
+			datos = r.text
+			data = json.loads(datos)
+			cont = 0
+			for item in data:
+				title = data[cont][0]
+				url = data[cont][1]
+				thumbnail = data[cont][2]
+				fanart = data[cont][3]
+				mode = data[cont][4]
+				year = data[cont][6]
+				genre = data[cont][7]
+				id_tmdb = data[cont][8]
+				desc = data[cont][9]
+				#infopeli = tmdb.traer_infopeli(id_tmdb , api_key)
+				#genre = tmdb.traer_genre(infopeli)
+				#desc = infopeli['overview']
+				#fan_art = infopeli['backdrop_path']
+				#fanart = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+fan_art
+				#thumb_nail = infopeli['poster_path']
+				#thumbnail = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+thumb_nail
+				add_item( mode , title  , desc  , url  , thumbnail  , fanart  , year , genre , True , False )
+				cont = cont + 1
+			xbmcplugin.endOfDirectory(HANDLE)
+
+def crear_menu_ciencia_ficcion():
+			r = requests.get("http://146.190.143.193:5001/menu_ciencia_ficcion")
+			datos = r.text
+			data = json.loads(datos)
+			cont = 0
+			for item in data:
+				title = data[cont][0]
+				url = data[cont][1]
+				thumbnail = data[cont][2]
+				fanart = data[cont][3]
+				mode = data[cont][4]
+				year = data[cont][6]
+				genre = data[cont][7]
+				id_tmdb = data[cont][8]
+				desc = data[cont][9]
+				#infopeli = tmdb.traer_infopeli(id_tmdb , api_key)
+				#genre = tmdb.traer_genre(infopeli)
+				#desc = infopeli['overview']
+				#fan_art = infopeli['backdrop_path']
+				#fanart = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+fan_art
+				#thumb_nail = infopeli['poster_path']
+				#thumbnail = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+thumb_nail
+				add_item( mode , title  , desc  , url  , thumbnail  , fanart  , year , genre , True , False )
+				cont = cont + 1
+			xbmcplugin.endOfDirectory(HANDLE)
  
+def crear_menu_artes_marciales():
+			r = requests.get("http://146.190.143.193:5001/menu_artes_marciales")
+			datos = r.text
+			data = json.loads(datos)
+			cont = 0
+			for item in data:
+				title = data[cont][0]
+				url = data[cont][1]
+				thumbnail = data[cont][2]
+				fanart = data[cont][3]
+				mode = data[cont][4]
+				year = data[cont][6]
+				genre = data[cont][7]
+				id_tmdb = data[cont][8]
+				desc = data[cont][9]
+				#infopeli = tmdb.traer_infopeli(id_tmdb , api_key)
+				#genre = tmdb.traer_genre(infopeli)
+				#desc = infopeli['overview']
+				#fan_art = infopeli['backdrop_path']
+				#fanart = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+fan_art
+				#thumb_nail = infopeli['poster_path']
+				#thumbnail = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+thumb_nail
+				add_item( mode , title  , desc  , url  , thumbnail  , fanart  , year , genre , True , False )
+				cont = cont + 1
+			xbmcplugin.endOfDirectory(HANDLE)
+
+def crear_menu_romance():
+			r = requests.get("http://146.190.143.193:5001/menu_romance")
+			datos = r.text
+			data = json.loads(datos)
+			cont = 0
+			for item in data:
+				title = data[cont][0]
+				url = data[cont][1]
+				thumbnail = data[cont][2]
+				fanart = data[cont][3]
+				mode = data[cont][4]
+				year = data[cont][6]
+				genre = data[cont][7]
+				id_tmdb = data[cont][8]
+				desc = data[cont][9]
+				#infopeli = tmdb.traer_infopeli(id_tmdb , api_key)
+				#genre = tmdb.traer_genre(infopeli)
+				#desc = infopeli['overview']
+				#fan_art = infopeli['backdrop_path']
+				#fanart = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+fan_art
+				#thumb_nail = infopeli['poster_path']
+				#thumbnail = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+thumb_nail
+				add_item( mode , title  , desc  , url  , thumbnail  , fanart  , year , genre , True , False )
+				cont = cont + 1
+			xbmcplugin.endOfDirectory(HANDLE)
+
 #Funcin para agregar una opcion a los menus           
 def add_item(mode="",title="",desc="",url="",thumbnail="",fanart="",year ="",genre="", isPlayable = False , folder=True ):
 	
@@ -262,5 +366,13 @@ elif(action == "cmenuaccion"):
 	crear_menu_accion()   
 elif(action == "cmenuwestern"):
 	crear_menu_western()   
+elif(action == "cmenufantasia"):
+	crear_menu_fantasia()
+elif(action == "cmenucienciaficcion"):
+	crear_menu_ciencia_ficcion()
+elif(action == "cmenuartesmarciales"):
+	crear_menu_artes_marciales()
+elif(action == "cmenuromance"):
+	crear_menu_romance()
 elif(action == "play"):
 	play_video(url)
